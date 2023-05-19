@@ -1,31 +1,39 @@
-import GenerateRandom from './randomNum';
-
-export default class Game {
-  constructor(board) {
+export default class GamePlay {
+  constructor(board, popUp, statisticShowingNum, statisticHittingNum) {
     this.board = board;
+    this.popUp = popUp;
+    this.statisticShowingNum = statisticShowingNum;
+    this.statisticHittingNum = statisticHittingNum;
     this.boardCells = this.board.querySelectorAll('.board-item');
     this.boardSize = this.boardCells.length - 1;
+    this.statistic = null;
     this.lastCell = null;
-    this.generateRandom = null;
   }
 
-  init() {
-    this.generateRandom = new GenerateRandom(this.boardSize);
-    this.rendering();
+  rendering(index) {
+    if (this.lastCell !== null) {
+      this.lastCell.classList.remove('goblin-active');
+    }
+
+    this.boardCells[index].classList.add('goblin-active');
+    this.lastCell = this.boardCells[index];
   }
 
-  rendering() {
-    (async () => {
-      const index = await this.generateRandom.randomNum();
+  gameOver() {
+    const element = document.createElement('span');
+    element.textContent = 'Жаль, но Вы не справились. Попробуйте еще раз.';
 
-      if (this.lastCell !== null) {
-        this.lastCell.classList.remove('goblin-active');
-      }
+    this.popUp.classList.remove('hidden');
 
-      this.boardCells[index].classList.add('goblin-active');
-      this.lastCell = this.boardCells[index];
+    this.popUp.append(element);
+  }
 
-      setTimeout(() => this.rendering(), 500);
-    })();
+  playerWin() {
+    const element = document.createElement('span');
+    element.textContent = 'Вы победили. Молодец, так держать!!!';
+
+    this.popUp.classList.remove('hidden');
+
+    this.popUp.append(element);
   }
 }
