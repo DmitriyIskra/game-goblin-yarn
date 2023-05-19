@@ -1,0 +1,1 @@
+![CI](https://github.com/DmitriyIskra/game-random-goblin/actions/workflows/web.yml/badge.svg)

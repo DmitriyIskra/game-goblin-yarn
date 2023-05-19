@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    box-sizing: border-box;
+}
+
+body {
+    color: #999;
+}
+
+.wr-board {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: flex;
+    width: 295px;
+
+    gap: 5px;
+    flex-wrap: wrap;
+    transform: translate(-50%, -50%);
+}
+
+.board-item {
+    width: 70px;
+    height: 70px;
+
+    border: 1px solid #000000;
+
+    cursor: crosshair;
+}
+
+.goblin-active {
+    background: no-repeat url(../img/goblin.png);
+    background-position: center;
+    background-size: 100% auto;
+}
