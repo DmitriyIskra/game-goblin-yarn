@@ -1,15 +1,22 @@
 export default class GameController {
-  constructor(gamePlay, generatorRandom, statistic) {
+  constructor(gamePlay, generatorRandom, statistic, cursor) {
     this.gamePlay = gamePlay;
     this.statistic = statistic;
     this.generatorRandom = generatorRandom;
+    this.cursor = cursor;
     this.counterShowing = 0;
+    this.lastCellActive = null;
   }
 
   init() {
     this.generatorRandom.size = this.gamePlay.boardSize;
 
-    this.gamePlay.board.addEventListener('click', this.onClick.bind(this));
+    // this.gamePlay.board.addEventListener('click', this.onClick.bind(this));
+    this.gamePlay.board.addEventListener('mousedown', this.onMouseDown.bind(this));
+    this.gamePlay.board.addEventListener('mouseup', this.onMouseUp.bind(this));
+    this.cursor.cursor.addEventListener('mouseup', this.onMouseUp.bind(this));
+
+    this.cursor.cursor.style.display = 'none';
 
     this.start();
   }
@@ -40,8 +47,25 @@ export default class GameController {
     })();
   }
 
-  onClick(e) {
-    if (e.target.matches('.goblin-active') && this.statistic.hittingTarget < 5) {
+  // onClick(e) {
+  //   if (e.target.matches('.goblin-active')
+  //    && this.statistic.hittingTarget < 5
+  //     && this.statistic.showedTotal < 5) {
+  //     // обнуляем количество показов при попадании
+  //     this.statistic.showedTotal = 0;
+  //     // Добавляет очки если есть попадание
+  //     this.statistic.addHittingTarget();
+  //     // отображение количества попаданий
+  //     this.gamePlay.statisticHittingNum.textContent = `${this.statistic.hittingTarget}`;
+  //     // Отображение количества показов
+  //     this.gamePlay.statisticShowingNum.textContent = `${this.statistic.showedTotal}`;
+  //   }
+  // }
+
+  onMouseDown(e) {
+    if (e.target.matches('.goblin-active')
+     && this.statistic.hittingTarget < 5
+      && this.statistic.showedTotal < 5) {
       // обнуляем количество показов при попадании
       this.statistic.showedTotal = 0;
       // Добавляет очки если есть попадание
@@ -51,6 +75,20 @@ export default class GameController {
       // Отображение количества показов
       this.gamePlay.statisticShowingNum.textContent = `${this.statistic.showedTotal}`;
 
+      e.target.style.cursor = 'none';
+
+      this.lastCellActive = e.target;
+
+      this.cursor.changeCursor(e.clientY, e.clientX);
+    }
+  }
+
+  onMouseUp(e) {
+    this.cursor.cursorHidden();
+      
+    if(this.lastCellActive) {
+      this.lastCellActive.style.cursor = 'default';
+      this.lastCellActive = null;
     }
   }
 }
