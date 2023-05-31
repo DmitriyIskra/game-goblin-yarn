@@ -47,20 +47,6 @@ export default class GameController {
     })();
   }
 
-  // onClick(e) {
-  //   if (e.target.matches('.goblin-active')
-  //    && this.statistic.hittingTarget < 5
-  //     && this.statistic.showedTotal < 5) {
-  //     // обнуляем количество показов при попадании
-  //     this.statistic.showedTotal = 0;
-  //     // Добавляет очки если есть попадание
-  //     this.statistic.addHittingTarget();
-  //     // отображение количества попаданий
-  //     this.gamePlay.statisticHittingNum.textContent = `${this.statistic.hittingTarget}`;
-  //     // Отображение количества показов
-  //     this.gamePlay.statisticShowingNum.textContent = `${this.statistic.showedTotal}`;
-  //   }
-  // }
 
   onMouseDown(e) {
     if (e.target.matches('.goblin-active')
@@ -83,7 +69,7 @@ export default class GameController {
     }
   }
 
-  onMouseUp(e) {
+  onMouseUp() {
     this.cursor.cursorHidden();
 
     if (this.lastCellActive) {
