@@ -1,6 +1,6 @@
 // TODO: write code here
 import GameController from './GameController';
-import GamePlay from './GamePlay';
+import GamePlay from './GamePlay.js';
 import GenerateRandom from './randomNum';
 import Statistic from './Statistic';
 import Cursor from './Cursor';
