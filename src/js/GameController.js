@@ -83,7 +83,7 @@ export default class GameController {
     }
   }
 
-  onMouseUp(e) {
+  onMouseUp() {
     this.cursor.cursorHidden();
 
     if (this.lastCellActive) {
