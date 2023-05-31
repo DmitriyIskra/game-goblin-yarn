@@ -47,7 +47,6 @@ export default class GameController {
     })();
   }
 
-
   onMouseDown(e) {
     if (e.target.matches('.goblin-active')
      && this.statistic.hittingTarget < 5
