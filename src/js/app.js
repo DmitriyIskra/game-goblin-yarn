@@ -15,7 +15,7 @@ const gamecontroller = new GameController(
   new GamePlay(board, popUp, statisticShowingNum, statisticHittingNum),
   new GenerateRandom(),
   new Statistic(),
-  new Cursor(cursor)
+  new Cursor(cursor),
 );
 
 gamecontroller.init();

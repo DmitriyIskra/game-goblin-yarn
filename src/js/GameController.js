@@ -85,8 +85,8 @@ export default class GameController {
 
   onMouseUp(e) {
     this.cursor.cursorHidden();
-      
-    if(this.lastCellActive) {
+
+    if (this.lastCellActive) {
       this.lastCellActive.style.cursor = 'default';
       this.lastCellActive = null;
     }
