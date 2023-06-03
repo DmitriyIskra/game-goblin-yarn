@@ -9,7 +9,7 @@ export default class GenerateRandom {
       yield Math.floor(Math.random() * (sizeBoard + 1));
     }());
   }
- 
+
   randomNum() {
     return new Promise((resolve) => {
       const result = this.generator().next().value;

@@ -7,11 +7,11 @@ export default class GamePlay {
     this.boardCells = this.board.querySelectorAll('.board-item');
     this.boardSize = this.boardCells.length - 1;
     this.statistic = null;
-    this.lastCell = null; 
+    this.lastCell = null;
   }
 
   clear() {
-    if(this.lastCell) {
+    if (this.lastCell) {
       this.lastCell.classList.remove('goblin-active');
     }
   }

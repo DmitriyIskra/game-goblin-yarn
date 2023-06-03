@@ -18,7 +18,7 @@ export default class GameController {
 
     this.cursor.cursor.style.display = 'none';
 
-    this.start(); 
+    this.start();
   }
 
   start() {

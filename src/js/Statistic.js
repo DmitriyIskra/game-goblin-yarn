@@ -8,7 +8,7 @@ export default class Statistic {
     this.showedTotal += 1;
   }
 
-  addHittingTarget() { 
+  addHittingTarget() {
     this.hittingTarget += 1;
   }
 
