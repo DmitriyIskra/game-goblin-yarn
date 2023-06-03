@@ -18,7 +18,7 @@ export default class GameController {
 
     this.cursor.cursor.style.display = 'none';
 
-    this.start();
+    this.start(); 
   }
 
   start() {
@@ -64,15 +64,17 @@ export default class GameController {
 
       this.lastCellActive = e.target;
 
-      this.cursor.changeCursor(e.clientY, e.clientX);
+      this.cursor.changeCursor(e.clientY, e.clientX); // позиционируем блок с крсором по точке клика
+
+      this.gamePlay.clear();
     }
   }
 
   onMouseUp() {
     this.cursor.cursorHidden();
 
-    if (this.lastCellActive) {
-      this.lastCellActive.style.cursor = 'default';
+    if (this.lastCellActive) { // если не пусто, значит было попадание и курсор кастомизировался
+      this.lastCellActive.style.cursor = 'default'; // Возвращаем стандартный курсор при поднятии клавиши после попадания
       this.lastCellActive = null;
     }
   }
