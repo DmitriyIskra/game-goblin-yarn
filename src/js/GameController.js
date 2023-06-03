@@ -67,6 +67,10 @@ export default class GameController {
       this.cursor.changeCursor(e.clientY, e.clientX); // позиционируем блок с крсором по точке клика
 
       this.gamePlay.clear();
+      
+      clearTimeout(this.timeOutId);
+
+      setTimeout(() => {this.start()}, 500);
     }
   }
 
